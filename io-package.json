@@ -32,8 +32,10 @@
         "restartAdapters":          ["vis"]
     },
     "native": {
-        "test1": true,
-        "test2": 42
+      "test1": true,
+      "test2": 42,
+      "getip": "192.168.1.1",
+      "trafficInfo": true
     },
     "objects": [
 
