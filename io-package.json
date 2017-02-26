@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "hilink",
-        "version":                  "0.5.0",
+        "version":                  "0.0.1",
 	    "news": {
 			"0.5.0": {
 			  "en": "beta version",
@@ -23,7 +23,7 @@
         "platform":                 "Javascript/Node.js",
         "mode":                     "daemon",
         "icon":                     "hilink.png",
-        "enabled":                  true,
+        "enabled":                  false,
 		"extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.hilink/master/admin/hilink.png",
 		"keywords":                 ["hilink", "vis", "GUI", "graphical", "scada"],
         "readme":                   "https://github.com/ioBroker/ioBroker.hilink/blob/master/README.md",
