@@ -3,7 +3,7 @@
         "name":                     "hilink",
         "version":                  "0.0.1",
 	    "news": {
-			"0.5.0": {
+			"0.0.1": {
 			  "en": "beta version",
 			  "de": "Betaversion",
 			  "ru": "Бета версия"
@@ -14,19 +14,19 @@
 			  "ru": "Первоначальный адаптер"
 			}
 		},
-        "title":                    "Javascript/Node.js based hilink adapter",
+        "title":                    "Hilink adapter",
         "desc":                     {
 				 "en": "ioBroker hilink Adapter",
 				 "de": "ioBroker Hilink Adapter",
-				 "ru": "ioBroker Hilink драйвер как образец"
+				 "ru": "ioBroker Hilink драйвер"
 		},
         "platform":                 "Javascript/Node.js",
         "mode":                     "daemon",
         "icon":                     "hilink.png",
         "enabled":                  false,
-		"extIcon":                  "https://raw.githubusercontent.com/ioBroker/ioBroker.hilink/master/admin/hilink.png",
+		"extIcon":                  "https://github.com/bondrogeen/iobroker.hilink/blob/master/admin/hilink.png",
 		"keywords":                 ["hilink", "vis", "GUI", "graphical", "scada"],
-        "readme":                   "https://github.com/ioBroker/ioBroker.hilink/blob/master/README.md",
+        "readme":                   "https://github.com/bondrogeen/iobroker.hilink/blob/master/README.md",
 		"loglevel":                 "info",
         "type":                     "common adapters",
         "restartAdapters":          ["vis"]
