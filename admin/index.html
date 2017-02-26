@@ -31,7 +31,7 @@
     systemDictionary = {
         "hilink adapter settings": {"de": "Beispiel", "ru": "Настройка драйвера Hilink"},
         "getip":                    {"en": "IP", "de": "IP", "ru": "IP"},
-        "test2":                    {"en": "info", "de": "Test 2", "ru": "info"},
+        "trafficInfo":              {"en": "info", "de": "Test 2", "ru": "info"},
         "on save adapter restarts with new config immediately": {
             "de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
             "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
@@ -79,9 +79,14 @@
         <td><img src="hilink.png"/></td>
         <td><h3 class="translate">hilink adapter settings</h3></td>
     </tr></table>
-    <p>
-        <input class="value" id="getip"/><br> <span class="translate">getip</span><br>
-        <input class="value" id="trafficInfo"/><br> <span class="translate">trafficInfo</span><br>
+    <p><br>
+
+        <input class="value" id="getip"/> <span class="translate">getip</span><br>
+
+        <input type="checkbox" id="trafficInfo" name="option2" class="value" value="true" checked/>
+        <span class="translate">trafficInfo</span><br>
+
+
 
 
     </p>
