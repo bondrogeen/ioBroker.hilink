@@ -148,6 +148,10 @@ function main() {
     adapter.log.info('config getip: ' + adapter.config.getip);
     adapter.log.info('config trafficInfo: ' + adapter.config.trafficInfo);
 
+    hilink.setIp(adapter.config.getip);
+
+    hilink.setTrafficInfo(adapter.config.trafficInfo);
+
     /**
      *
      *      For every state in the system there has to be also an object of type state

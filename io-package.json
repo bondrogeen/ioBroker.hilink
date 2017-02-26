@@ -34,8 +34,8 @@
     "native": {
       "test1": true,
       "test2": 42,
-      "getip": "192.168.1.1",
-      "trafficInfo": true
+      "getip": "192.168.8.1",
+      "trafficInfo": "auto"
     },
     "objects": [
 
