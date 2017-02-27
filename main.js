@@ -77,31 +77,43 @@ function setHilink (setid, response ) {
     }
 }
 
-function func() {
+function timeStatus() {
 
-hilink.traffic(function( response ){
-    setHilink("traffic.total",response);
-});
+    hilink.smsCount(function( response ){
+        setHilink("smscount",response);
+    });
 
-hilink.trafficMonth(function( response ){
-    setHilink("traffic.month",response);
-});
+    hilink.statusNet(function( response ){
+        setHilink("status.net",response);
+    });
 
-hilink.smsCount(function( response ){
-    setHilink("smsCount",response);
-});
 
-hilink.statusNet(function( response ){
-    setHilink("status",response);
-});
+    hilink.status(function( response ){
+        setHilink("status.status",response);
+    });
 
-hilink.status(function( response ){
-    setHilink("status",response);
-});
-
+    hilink.signal(function( response ){
+        setHilink("status.signal",response);
+    });
+    ;
 }
 
-setInterval(func, 10000);
+
+function timeTraffic() {
+
+    hilink.traffic(function( response ){
+        setHilink("traffic.total",response);
+    });
+
+    hilink.trafficMonth(function( response ){
+        setHilink("traffic.month",response);
+    });
+}
+
+
+setInterval(timeStatus, 60000);
+setInterval(timeTraffic, 10000);
+
 
 
 function main() {
@@ -109,7 +121,7 @@ function main() {
     adapter.log.info('config trafficInfo: ' + adapter.config.trafficInfo);
     hilink.setIp(adapter.config.getip);
     hilink.setTrafficInfo(adapter.config.trafficInfo);
-
+/*
     adapter.subscribeStates('*');
 
     adapter.setState('testVariable', true);
@@ -125,4 +137,5 @@ function main() {
     adapter.checkGroup('admin', 'admin', function (res) {
         console.log('check group user admin group admin: ' + res);
     });
+    */
 }
