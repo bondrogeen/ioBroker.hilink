@@ -33,7 +33,7 @@
         "messagebox": 	     	    true
     },
     "native": {
-      "Test": true,
+      "setTest": true,
       "settime": "60000",
       "getip": "192.168.8.1",
       "trafficInfo": "auto"
