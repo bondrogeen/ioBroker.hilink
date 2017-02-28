@@ -41,7 +41,7 @@ adapter.on('stateChange', function (id, state) {
 
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
 adapter.on('message', function (obj) {
-    adapter.log.info('send obg ' JSON.stringify(obj));
+    adapter.log.info('send obg '+JSON.stringify(obj));
     if (typeof obj == 'object' && obj.message) {
         if (obj.command == 'send') {
             // e.g. send email or pushover or whatever
