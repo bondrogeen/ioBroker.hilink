@@ -24,6 +24,7 @@
         "mode":                     "daemon",
         "icon":                     "hilink.png",
         "enabled":                  false,
+	"messagebox": 		    true,    
 		"extIcon":                  "https://github.com/bondrogeen/iobroker.hilink/blob/master/admin/hilink.png",
 		"keywords":                 ["hilink", "vis", "GUI", "graphical", "scada"],
         "readme":                   "https://github.com/bondrogeen/iobroker.hilink/blob/master/README.md",
