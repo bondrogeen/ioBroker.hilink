@@ -119,6 +119,8 @@ setInterval(timeTraffic, 10000);
 function main() {
     adapter.log.info('config getip: ' + adapter.config.getip);
     adapter.log.info('config trafficInfo: ' + adapter.config.trafficInfo);
+    adapter.log.info('config setTime: ' + adapter.config.setTime);
+
     hilink.setIp(adapter.config.getip);
     hilink.setTrafficInfo(adapter.config.trafficInfo);
 /*
