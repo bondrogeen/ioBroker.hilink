@@ -34,7 +34,7 @@
     },
     "native": {
       "test1": true,
-      "setTime": 60000,
+      "settime": "60000",
       "getip": "192.168.8.1",
       "trafficInfo": "auto"
     },
