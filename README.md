@@ -31,7 +31,7 @@ sendTo("hilink.0",'send',{
     log(JSON.stringify( response, null, 2 ));
 });
 
-sendTo("hilink.0",'send',{phone:'+79097744733',message:  'Проверка работы'});
+sendTo("hilink.0",'send',{phone:'+7123456789',message:  'Проверка работы'});
 
 
 // чтение сообщений 
