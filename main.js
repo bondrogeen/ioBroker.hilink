@@ -38,20 +38,79 @@ adapter.on('stateChange', function (id, state) {
         adapter.log.info('ack is not set!');
     }
 });
-
+var send_callback;
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
 adapter.on('message', function (obj) {
     adapter.log.info('send obg '+JSON.stringify(obj));
     if (typeof obj == 'object' && obj.message) {
-        if (obj.command == 'send') {
-            // e.g. send email or pushover or whatever
-            console.log('send command');
+        if (obj.command == 'control') {
+            adapter.log.info(JSON.stringify(obj.message));
+            if (obj.message == 'conect' || obj.message == 'desconect' || obj.message == 'reboot') {
+                //adapter.log.info(JSON.stringify(obj.message));
+                hilink.control(obj.message, function (response) {
+                    if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                });
+            }
 
-            // Send response in callback if required
-            if (obj.callback) adapter.sendTo(obj.from, obj.command, 'Message received', obj.callback);
+        } else if (obj.command == 'send') {
+            if (obj.message.phone && obj.message.message) {
+                hilink.send(obj.message.phone, obj.message.message, function (response) {
+                    if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                });
+            }
+        } else if (obj.command == 'read') {
+            if (obj.message == 'outbox' || obj.message == 'inbox' || obj.message == 'new') {
+                if (obj.message == 'inbox') {
+                    hilink.listInbox(function (response) {
+                        if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                } else if (obj.message == 'outbox') {
+                    hilink.listOutbox(function (response) {
+                        if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                } else if (obj.message == 'new') {
+                    hilink.listNew(function (response) {
+                        if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                }
+            }
+        } else if (obj.command == 'ussd') {
+            if (obj.message) {
+                hilink.ussd(obj.message,function(response){
+                    if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                });
+            }
+        }else if (obj.command == 'delete'){
+            if (obj.message) {
+                hilink.delete(obj.message,function(response){
+                    if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                });
+            }
+        }else if (obj.command == 'clear'){
+            if (obj.message=='inbox'||obj.message=='outbox') {
+                if(obj.message=='inbox') hilink.clearInbox();
+                if(obj.message=='outbox') hilink.clearOutbox();
+            }
+        }else if (obj.command == 'setRead'){
+            if (obj.message=='all'){
+                hilink.readAll(function(response ){
+                    if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                });
+            }else{
+                hilink.setRead(obj.message,function(response ){
+                    if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
+                });
+
+            }
         }
     }
 });
+
+
+
+
+
+
 
 // is called when databases are connected and adapter received configuration.
 // start here!
@@ -124,21 +183,21 @@ function main() {
     adapter.log.info('config setTest: ' + adapter.config.setTest);
     hilink.setIp(adapter.config.getip);
     hilink.setTrafficInfo(adapter.config.trafficInfo);
-/*
-    adapter.subscribeStates('*');
+    /*
+     adapter.subscribeStates('*');
 
-    adapter.setState('testVariable', true);
+     adapter.setState('testVariable', true);
 
-    adapter.setState('testVariable', {val: true, ack: true});
+     adapter.setState('testVariable', {val: true, ack: true});
 
-    adapter.setState('testVariable', {val: true, ack: true, expire: 30});
+     adapter.setState('testVariable', {val: true, ack: true, expire: 30});
 
-    adapter.checkPassword('admin', 'iobroker', function (res) {
-        console.log('check user admin pw ioboker: ' + res);
-    });
+     adapter.checkPassword('admin', 'iobroker', function (res) {
+     console.log('check user admin pw ioboker: ' + res);
+     });
 
-    adapter.checkGroup('admin', 'admin', function (res) {
-        console.log('check group user admin group admin: ' + res);
-    });
-    */
+     adapter.checkGroup('admin', 'admin', function (res) {
+     console.log('check group user admin group admin: ' + res);
+     });
+     */
 }
