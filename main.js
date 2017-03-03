@@ -147,7 +147,6 @@ function timeStatus() {
         setHilink("status.net",response);
     });
 
-
     hilink.status(function( response ){
         setHilink("status.status",response);
     });
@@ -155,11 +154,6 @@ function timeStatus() {
     hilink.signal(function( response ){
         setHilink("status.signal",response);
     });
-    ;
-}
-
-
-function timeTraffic() {
 
     hilink.traffic(function( response ){
         setHilink("traffic.total",response);
@@ -168,11 +162,10 @@ function timeTraffic() {
     hilink.trafficMonth(function( response ){
         setHilink("traffic.month",response);
     });
+
 }
 
 
-setInterval(timeStatus, 60000);
-setInterval(timeTraffic, 10000);
 
 
 
@@ -181,23 +174,9 @@ function main() {
     adapter.log.info('config trafficInfo: ' + adapter.config.trafficInfo);
     adapter.log.info('config settime: ' + adapter.config.settime);
     adapter.log.info('config setTest: ' + adapter.config.setTest);
+
+
     hilink.setIp(adapter.config.getip);
     hilink.setTrafficInfo(adapter.config.trafficInfo);
-    /*
-     adapter.subscribeStates('*');
-
-     adapter.setState('testVariable', true);
-
-     adapter.setState('testVariable', {val: true, ack: true});
-
-     adapter.setState('testVariable', {val: true, ack: true, expire: 30});
-
-     adapter.checkPassword('admin', 'iobroker', function (res) {
-     console.log('check user admin pw ioboker: ' + res);
-     });
-
-     adapter.checkGroup('admin', 'admin', function (res) {
-     console.log('check group user admin group admin: ' + res);
-     });
-     */
+    setInterval(timeStatus, Number(adapter.config.settime));
 }
