@@ -5,7 +5,6 @@
 // you have to require the utils module and call adapter function
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 var hilink = require('hilinkhuawei');
-
 var adapter = utils.adapter('hilink');
 
 
@@ -28,17 +27,14 @@ adapter.on('objectChange', function (id, obj) {
 adapter.on('stateChange', function (id, state) {
     // Warning, state can be null if it was deleted
     //adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
-
-
-
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
-
-
         adapter.log.info('ack is not set!');
     }
 });
-var send_callback;
+
+
+
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
 adapter.on('message', function (obj) {
     adapter.log.info('send obg '+JSON.stringify(obj));
@@ -51,7 +47,6 @@ adapter.on('message', function (obj) {
                     if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
                 });
             }
-
         } else if (obj.command == 'send') {
             if (obj.message.phone && obj.message.message) {
                 hilink.send(obj.message.phone, obj.message.message, function (response) {
@@ -164,6 +159,8 @@ function timeStatus() {
     });
 
 }
+
+
 
 
 
