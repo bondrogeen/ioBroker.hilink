@@ -7,7 +7,6 @@ var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 var hilink = require('hilinkhuawei');
 var adapter = utils.adapter('hilink');
 
-
 adapter.on('unload', function (callback) {
     try {
         adapter.log.info('cleaned everything up...');
@@ -20,18 +19,41 @@ adapter.on('unload', function (callback) {
 // is called if a subscribed object changes
 adapter.on('objectChange', function (id, obj) {
     // Warning, obj can be null if it was deleted
-    //adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
+    adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
 });
 
+var sms={};
 // is called if a subscribed state changes
 adapter.on('stateChange', function (id, state) {
-    // Warning, state can be null if it was deleted
+    if(sms.state_old==undefined) sms.state_old=0;
+    if(id==adapter.namespace +'.smscount.LocalUnread'){
+        if(state.val != sms.state_old&&state.val>sms.state_old&&state.val!='0'){
+            var count = Number(state.val )- sms.state_old
+            hilink.listNew(function (response) {
+                var res = {};
+                res.response = response.response[0]
+                delete res.response.Priority
+                delete res.response.SaveType
+                delete res.response.Sca
+                delete res.response.SmsType
+                delete res.response.Smstat
+                adapter.getState('last_sms.Date', function (err, state) {
+                    if(state.val!=res.response.Date){
+                        setHilink("last_sms",res);
+                        adapter.log.info('res ' + JSON.stringify(res));
+                    }
+                });
+            });
+        }
+        sms.state_old=state.val;
+    }
     //adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
         adapter.log.info('ack is not set!');
     }
 });
+
 
 
 
@@ -132,7 +154,23 @@ function setHilink (setid, response ) {
     }
 }
 
+adapter.setObject('test', {
+    type: 'state',
+    common: {
+        name: 'test',
+        type: 'mixed',
+        role: 'indicator',
+        "read": "true",
+        "write": "true"
+    },
+    native: {}
+});
+
+///adapter.setState('test', {val: '11111', ack: true});
+
+
 function timeStatus() {
+
 
     hilink.smsCount(function( response ){
         setHilink("smscount",response);
@@ -164,16 +202,15 @@ function timeStatus() {
 
 
 
-
-
 function main() {
     adapter.log.info('config getip: ' + adapter.config.getip);
     adapter.log.info('config trafficInfo: ' + adapter.config.trafficInfo);
     adapter.log.info('config settime: ' + adapter.config.settime);
     adapter.log.info('config setTest: ' + adapter.config.setTest);
-
-
     hilink.setIp(adapter.config.getip);
     hilink.setTrafficInfo(adapter.config.trafficInfo);
     setInterval(timeStatus, Number(adapter.config.settime));
+    adapter.subscribeStates('smscount.LocalUnread');
+
+
 }
