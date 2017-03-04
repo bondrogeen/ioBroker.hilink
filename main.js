@@ -38,7 +38,7 @@ adapter.on('stateChange', function (id, state) {
                 delete res.response.SmsType
                 delete res.response.Smstat
                 adapter.getState('last_sms.Date', function (err, state) {
-                    if(state.val!=res.response.Date){
+                    if(state==null||state.val!=res.response.Date){
                         setHilink("last_sms",res);
                         adapter.log.info('res ' + JSON.stringify(res));
                     }
