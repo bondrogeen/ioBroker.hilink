@@ -47,22 +47,14 @@ adapter.on('stateChange', function (id, state) {
         }
         sms.state_old=state.val;
     }
-    //adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
-    // you can use the ack flag to detect if it is status (true) or command (false)
-    if (state && !state.ack) {
-        adapter.log.info('ack is not set!');
-    }
 });
-
-
-
 
 // Some message was sent to adapter instance over message box. Used by email, pushover, text2speech, ...
 adapter.on('message', function (obj) {
     adapter.log.info('send obg '+JSON.stringify(obj));
     if (typeof obj == 'object' && obj.message) {
         if (obj.command == 'control') {
-            adapter.log.info(JSON.stringify(obj.message));
+            //adapter.log.info(JSON.stringify(obj.message));
             if (obj.message == 'conect' || obj.message == 'desconect' || obj.message == 'reboot') {
                 //adapter.log.info(JSON.stringify(obj.message));
                 hilink.control(obj.message, function (response) {
@@ -117,24 +109,14 @@ adapter.on('message', function (obj) {
                 hilink.setRead(obj.message,function(response ){
                     if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
                 });
-
             }
         }
     }
 });
 
-
-
-
-
-
-
-// is called when databases are connected and adapter received configuration.
-// start here!
 adapter.on('ready', function () {
     main();
 });
-
 
 function setHilink (setid, response ) {
     for (var key in response.response) {
@@ -154,53 +136,26 @@ function setHilink (setid, response ) {
     }
 }
 
-adapter.setObject('test', {
-    type: 'state',
-    common: {
-        name: 'test',
-        type: 'mixed',
-        role: 'indicator',
-        "read": "true",
-        "write": "true"
-    },
-    native: {}
-});
-
-///adapter.setState('test', {val: '11111', ack: true});
-
-
 function timeStatus() {
-
-
     hilink.smsCount(function( response ){
         setHilink("smscount",response);
     });
-
     hilink.statusNet(function( response ){
         setHilink("status.net",response);
     });
-
     hilink.status(function( response ){
         setHilink("status.status",response);
     });
-
     hilink.signal(function( response ){
         setHilink("status.signal",response);
     });
-
     hilink.traffic(function( response ){
         setHilink("traffic.total",response);
     });
-
     hilink.trafficMonth(function( response ){
         setHilink("traffic.month",response);
     });
-
 }
-
-
-
-
 
 function main() {
     adapter.log.info('config getip: ' + adapter.config.getip);
@@ -211,6 +166,4 @@ function main() {
     hilink.setTrafficInfo(adapter.config.trafficInfo);
     setInterval(timeStatus, Number(adapter.config.settime));
     adapter.subscribeStates('smscount.LocalUnread');
-
-
 }
