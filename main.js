@@ -141,13 +141,13 @@ function timeStatus() {
         setHilink("smscount",response);
     });
     hilink.statusNet(function( response ){
-        setHilink("status.net",response);
+        setHilink("info.net",response);
     });
     hilink.status(function( response ){
-        setHilink("status.status",response);
+        setHilink("info.status",response);
     });
     hilink.signal(function( response ){
-        setHilink("status.signal",response);
+        setHilink("info.signal",response);
     });
     hilink.traffic(function( response ){
         setHilink("traffic.total",response);

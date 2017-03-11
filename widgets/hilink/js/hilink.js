@@ -30,7 +30,7 @@ $.extend(true, systemDictionary, {
 
 // this code can be placed directly in hilink.html
 vis.binds.hilink = {
-    version: "0.5.0",
+    version: "0.0.1",
     showVersion: function () {
         if (vis.binds.hilink.version) {
             console.log('Version hilink: ' + vis.binds.hilink.version);
