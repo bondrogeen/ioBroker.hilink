@@ -1,9 +1,9 @@
 {
     "common": {
         "name":                     "hilink",
-        "version":                  "0.0.1",
+        "version":                  "0.0.2",
 	    "news": {
-			"0.0.1": {
+			"0.0.2": {
 			  "en": "beta version",
 			  "de": "Betaversion",
 			  "ru": "Бета версия"
@@ -24,7 +24,7 @@
         "mode":                     "daemon",
         "icon":                     "hilink.png",
         "enabled":                  false,
-		"extIcon":                  "https://github.com/bondrogeen/iobroker.hilink/blob/master/admin/hilink.png",
+		"extIcon":                  "https://raw.githubusercontent.com/bondrogeen/iobroker.hilink/master/admin/hilink.png",
 		"keywords":                 ["hilink", "vis", "GUI", "graphical", "scada"],
         "readme":                   "https://github.com/bondrogeen/iobroker.hilink/blob/master/README.md",
 		"loglevel":                 "info",
