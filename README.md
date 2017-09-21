@@ -80,5 +80,8 @@ sendTo("hilink.0",'setRead','40002');
 
 ## Changelog
 
+#### 0.0.2
+* (bondrogeen) add 3372h
+
 #### 0.0.1
 * (bondrogeen) initial release
