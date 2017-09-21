@@ -162,8 +162,10 @@ function main() {
     adapter.log.info('config trafficInfo: ' + adapter.config.trafficInfo);
     adapter.log.info('config settime: ' + adapter.config.settime);
     adapter.log.info('config setTest: ' + adapter.config.setTest);
+    adapter.log.info('config model: ' + adapter.config.model);
     hilink.setIp(adapter.config.getip);
     hilink.setTrafficInfo(adapter.config.trafficInfo);
+    hilink.setModel(adapter.config.model);
     setInterval(timeStatus, Number(adapter.config.settime));
     adapter.subscribeStates('smscount.LocalUnread');
 }

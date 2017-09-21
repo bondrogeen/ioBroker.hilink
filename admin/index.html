@@ -33,6 +33,7 @@
         "hilink adapter settings": {"de": "Beispiel", "ru": "Настройка драйвера Hilink"},
         "getip":                    {"en": "Setting ip address of the modem", "de": "Einstellung IP-Adresse des Modems", "ru": "Установка ip адрес модема"},
         "trafficInfo":              {"en": "Traffic information", "de": "Verkehrsinformationen", "ru": "Информация о трафике"},
+        "model":              {"en": "Modem model", "de": "Modemmodell", "ru": "Модель модема"},
         "on save adapter restarts with new config immediately": {
             "de": "Beim Speichern von Einstellungen der Adapter wird sofort neu gestartet.",
             "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
@@ -84,6 +85,11 @@
 
         <input maxlength="15" placeholder="192.168.8.1" class="value" id="getip"/> &nbsp;&nbsp;&nbsp; <span class="translate">getip</span><br><br>
         <input type="number" min="1000" step="1000" class="value" id="settime"/> &nbsp;&nbsp;&nbsp; <span class="translate">settime</span><br><br>
+        <select class="value" id="model">
+            <option value="3372s">3372s
+            <option value="3372h">3372h
+        </select> &nbsp;&nbsp;&nbsp;<span class="translate">trafficInfo</span><br>
+
         <select class="value" id="trafficInfo">
             <option value="auto">auto
             <option value="def">def

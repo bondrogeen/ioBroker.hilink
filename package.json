@@ -1,6 +1,6 @@
 {
   "name": "iobroker.hilink",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ioBroker hilink Adapter",
   "author": {
     "name": "bondrogeen",
@@ -25,7 +25,7 @@
     "url": "https://github.com/bondrogeen/iobroker.hilink"
   },
   "dependencies": {
-    "hilinkhuawei":"2.0.0"
+    "hilinkhuawei":"2.1.0"
   },
   "devDependencies": {
       "grunt": "^0.4.5",
