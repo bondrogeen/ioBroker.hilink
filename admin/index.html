@@ -74,6 +74,7 @@
     }
 </script>
 
+
 <!-- you have to put your config page in a div with id adapter-container -->
 <div id="adapter-container">
 
@@ -82,7 +83,9 @@
         <td><h3 class="translate">hilink adapter settings</h3></td>
     </tr></table>
     <p><br></p>
-
+    <div class="container-fluid">
+        <div class="row">
+    <form class="form-horizontal">
     <!-- Text input-->
     <div class="form-group">
         <label class="col-md-4 control-label" for="getip">IP адрес</label>
@@ -125,10 +128,11 @@
         </div>
         <span class="translate">trafficInfo</span>
     </div>
-
+        </form>
 
     <p class="translate">on save adapter restarts with new config immediately</p>
-
+        </div>
+</div>
 </div>
 
 </html>
