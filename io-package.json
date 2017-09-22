@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "hilink",
-        "version":                  "0.0.2",
+        "version":                  "0.0.3",
 	    "news": {
 			"0.0.2": {
 			  "en": "beta version",
@@ -34,6 +34,7 @@
     },
     "native": {
       "setTest": true,
+      "model": "3372s",
       "settime": "60000",
       "getip": "192.168.8.1",
       "trafficInfo": "auto"

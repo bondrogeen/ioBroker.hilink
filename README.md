@@ -1,9 +1,9 @@
-![Logo](admin/hilink.png)
-
-# ioBroker.hilink
+![Logo](admin/hilink.png)   
+ 
+# ioBroker.hilink   
 =================
 
-Драйвер для USB модемов Huawei с прошивками Hilink.
+Драйвер для USB модемов Huawei с прошивками Hilink.   
 
 Проверенно на модемах:    
 E3372h-153_Update_22.323.01.00.143_M_AT_05.10    
