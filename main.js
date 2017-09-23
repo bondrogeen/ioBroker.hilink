@@ -116,23 +116,37 @@ adapter.on('message', function (obj) {
 adapter.on('ready', function () {
     main();
 });
+
+function setValue (id, name, val ) {
+    adapter.getState(id , function (err, obj) {
+        //adapter.log.info(id + '.' + ' obj: ' + obj);
+        if (obj === null) {
+            adapter.setObject(id, {
+                type: 'state',
+                common: {
+                    name: name,
+                    type: 'mixed',
+                    role: 'indicator',
+                    read: "true",
+                    write: "false"
+                },
+                native: {}
+            });
+            adapter.setState(id, {val: val, ack: true});
+        } else {
+            adapter.setState(id, {val: val, ack: true});
+        }
+    });
+}
+
 function setHilink (setid, response ) {
+    var val;
     for (var key in response.response) {
-        var val = response.response[key];
-        adapter.setObject(setid+'.'+key, {
-            type: 'state',
-            common: {
-                name: key,
-                type: 'mixed',
-                role: 'indicator',
-                "read": "true",
-                "write": "false"
-            },
-            native: {}
-        });
-        adapter.setState(setid+'.' + key, {val: val, ack: true});
+        val = response.response[key];
+        setValue (setid + '.' + key, key, val )
     }
 }
+
 function timeStatus() {
     hilink.smsCount(function( response ){
         setHilink("smscount",response);
