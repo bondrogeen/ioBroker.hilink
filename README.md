@@ -3,7 +3,7 @@
 # ioBroker.hilink   
 =================
 
-Description
+##Description
 
 It is an adapter for Huawei USB modems with Hilink firmware.  
 
@@ -38,7 +38,7 @@ sendTo("hilink.0",'control','conect');
 // send messages
 sendTo("hilink.0",'send',{
     phone:  '+7123456789', // phone number
-    message:  'Проверка работы' // test message
+    message:  'test messages' // test message
     },function (response){
     log(JSON.stringify( response, null, 2 ));
 });
