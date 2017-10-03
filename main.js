@@ -24,28 +24,36 @@ adapter.on('objectChange', function (id, obj) {
 
 var sms={};
 // is called if a subscribed state changes
-adapter.on('stateChange', function (id, state) {
-    if(sms.state_old==undefined) sms.state_old=0;
+function last_sms(res){
+    var data_res = {};
+    delete res.Priority;
+    delete res.SaveType;
+    delete res.Sca;
+    delete res.SmsType;
+    delete res.Smstat ;
+    data_res.response = res;
+    adapter.getState('last_sms.Date', function (err, state) {
+      if(state==null||state.val!=res.Date){
+        setHilink("last_sms",data_res);          
+        adapter.log.info('res ' + JSON.stringify(res));
+        hilink.setRead(res.Index,function(response ){            
+        });
+      }
+    });    
+}
+
+
+// is called if a subscribed state changes
+adapter.on('stateChange', function (id, state) {    
     if(id==adapter.namespace +'.smscount.LocalUnread'){
-        if(state.val != sms.state_old&&state.val>sms.state_old&&state.val!='0'){
-            var count = Number(state.val )- sms.state_old
+        if(state.val != 0&&state.val!='0'){            
             hilink.listNew(function (response) {
-                var res = {};
-                res.response = response.response[0]
-                delete res.response.Priority
-                delete res.response.SaveType
-                delete res.response.Sca
-                delete res.response.SmsType
-                delete res.response.Smstat
-                adapter.getState('last_sms.Date', function (err, state) {
-                    if(state==null||state.val!=res.response.Date){
-                        setHilink("last_sms",res);
-                        adapter.log.info('res ' + JSON.stringify(res));
-                    }
-                });
+                adapter.log.info('length ' + response.response.length);
+                for (var i = 0; i < response.response.length; i++) {
+                    last_sms(response.response[i])
+                    }            
             });
         }
-        sms.state_old=state.val;
     }
 });
 
