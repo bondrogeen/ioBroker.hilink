@@ -31,8 +31,8 @@ function last_sms(res){
     delete res.Sca;
     delete res.SmsType;
     delete res.Smstat;
-    res.json = JSON.stringify(res);
     data_res.response = res;
+    data_res.response.json = JSON.stringify(res);
     adapter.getState('last_sms.Date', function (err, state) {
       if(state==null||state.val!=res.Date){
         setHilink("last_sms",data_res);          
