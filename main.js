@@ -22,7 +22,7 @@ adapter.on('objectChange', function (id, obj) {
     adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
 });
 
-var sms={};
+
 // is called if a subscribed state changes
 function last_sms(res){
     var data_res = {};
@@ -30,7 +30,8 @@ function last_sms(res){
     delete res.SaveType;
     delete res.Sca;
     delete res.SmsType;
-    delete res.Smstat ;
+    delete res.Smstat;
+    res.json = JSON.stringify(res);
     data_res.response = res;
     adapter.getState('last_sms.Date', function (err, state) {
       if(state==null||state.val!=res.Date){
