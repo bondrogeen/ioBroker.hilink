@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                     "hilink",
-        "version":                  "0.0.5",
+        "version":                  "0.2.2",
 	    "news": {
 			"0.0.2": {
 			  "en": "beta version",

@@ -70,17 +70,20 @@ sendTo("hilink.0",'clear','outbox',function (response){
      log(JSON.stringify( response, null, 2 ));
 });
 
-// изменить статус 'all' всех  сообщений на прочитанные или если указать '40002' индекс, только одного
-sendTo("hilink.0",'setRead','all',function (response){
-    log(JSON.stringify( response, null, 2 ));
-});
-
-sendTo("hilink.0",'setRead','40002');
 ```
 
 ## Changelog
 
-#### 0.0.2
+#### 0.2.2
+* (bondrogeen) add json last sms
+
+#### 0.0.5
+* (bondrogeen) fix last sms
+
+#### 0.0.4
+* (bondrogeen) fix
+
+#### 0.0.3
 * (bondrogeen) add 3372h
 
 #### 0.0.1

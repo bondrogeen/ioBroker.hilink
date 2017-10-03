@@ -36,7 +36,7 @@ function last_sms(res){
     adapter.getState('last_sms.Date', function (err, state) {
       if(state==null||state.val!=res.Date){
         setHilink("last_sms",data_res);          
-        adapter.log.info('res ' + JSON.stringify(res));
+        adapter.log.info('last_sms ' + JSON.stringify(res));
         hilink.setRead(res.Index,function(response ){            
         });
       }
