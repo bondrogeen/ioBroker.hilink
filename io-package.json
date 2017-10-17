@@ -1,45 +1,57 @@
 {
     "common": {
-        "name":                     "hilink",
-        "version":                  "0.2.3",
-	    "news": {
-			"0.0.2": {
-			  "en": "beta version",
-			  "de": "Betaversion",
-			  "ru": "Бета версия"
-			},
-			"0.0.1": {
-			  "en": "initial adapter",
-			  "de": "Initiale Version",
-			  "ru": "Первоначальный адаптер"
-			}
-		},
-        "title":                    "Hilink adapter",
-        "desc":                     {
-				 "en": "ioBroker hilink Adapter",
-				 "de": "ioBroker Hilink Adapter",
-				 "ru": "ioBroker Hilink драйвер"
-		},
-        "platform":                 "Javascript/Node.js",
-        "mode":                     "daemon",
-        "icon":                     "hilink.png",
-        "enabled":                  false,
-		"extIcon":                  "https://raw.githubusercontent.com/bondrogeen/iobroker.hilink/master/admin/hilink.png",
-		"keywords":                 ["hilink", "vis", "GUI", "graphical", "scada"],
-        "readme":                   "https://github.com/bondrogeen/iobroker.hilink/blob/master/README.md",
-		"loglevel":                 "info",
-        "type":                     "common adapters",
-        "restartAdapters":          ["vis"],
-        "messagebox": 	     	    true
+        "name": "hilink",
+        "version": "0.2.3",
+        "news": {
+            "0.0.2": {
+                "en": "beta version",
+                "de": "Betaversion",
+                "ru": "Бета версия"
+            },
+            "0.0.1": {
+                "en": "initial adapter",
+                "de": "Initiale Version",
+                "ru": "Первоначальный адаптер"
+            }
+        },
+        "title": "Hilink adapter",
+        "desc": {
+            "en": "ioBroker hilink Adapter",
+            "de": "ioBroker Hilink Adapter",
+            "ru": "ioBroker Hilink драйвер"
+        },
+        "platform": "Javascript/Node.js",
+        "mode": "daemon",
+        "icon": "hilink.png",
+        "enabled": false,
+        "extIcon": "https://raw.githubusercontent.com/bondrogeen/iobroker.hilink/master/admin/hilink.png",
+        "keywords": [
+            "hilink",
+            "vis",
+            "GUI",
+            "graphical",
+            "scada"
+        ],
+        "readme": "https://github.com/bondrogeen/iobroker.hilink/blob/master/README.md",
+        "loglevel": "info",
+        "type": "hardware",
+        "restartAdapters": [
+            "vis"
+        ],
+        "messagebox": true,
+        "authors": [
+            {
+                "name": "bondrogeen",
+                "email": "bondrogeen@gmail.com"
+            }
+        ]
     },
     "native": {
-      "setTest": true,
-      "model": "3372s",
-      "settime": "60000",
-      "getip": "192.168.8.1",
-      "trafficInfo": "auto"
+        "setTest": true,
+        "model": "3372s",
+        "settime": "60000",
+        "getip": "192.168.8.1",
+        "trafficInfo": "auto"
     },
-    "objects": [
-
-    ]
+    "objects": []
 }
