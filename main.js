@@ -49,7 +49,7 @@ adapter.on('stateChange', function (id, state) {
     if(id==adapter.namespace +'.smscount.LocalUnread'){
         if(state.val != 0&&state.val!='0'){            
             hilink.listNew(function (response) {
-                adapter.log.info('length ' + response.response.length);
+                adapter.log.debug('length ' + response.response.length);
                 for (var i = 0; i < response.response.length; i++) {
                     last_sms(response.response[i])
                     }            
