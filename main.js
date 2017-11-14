@@ -34,25 +34,28 @@ function last_sms(res){
     data_res.response = res;
     data_res.response.json = JSON.stringify(res);
     adapter.getState('last_sms.Date', function (err, state) {
-      if(state==null||state.val!=res.Date){
-        setHilink("last_sms",data_res);          
-        adapter.log.info('last_sms ' + JSON.stringify(res));
-        hilink.setRead(res.Index,function(response ){            
-        });
-      }
-    });    
+        if(state==null||state.val!=res.Date){
+            setHilink("last_sms",data_res);
+            adapter.log.info('last_sms ' + JSON.stringify(res));
+            hilink.setRead(res.Index,function(response ){
+            });
+        }
+    });
 }
 
-
 // is called if a subscribed state changes
-adapter.on('stateChange', function (id, state) {    
+adapter.on('stateChange', function (id, state) {
     if(id==adapter.namespace +'.smscount.LocalUnread'){
-        if(state.val != 0&&state.val!='0'){            
+        if(state.val != 0&&state.val!='0'){
             hilink.listNew(function (response) {
-                adapter.log.info('length ' + response.response.length);
-                for (var i = 0; i < response.response.length; i++) {
-                    last_sms(response.response[i])
-                    }            
+                if(response.response != "no_new_sms"){
+                    adapter.log.info('length ' + response.response.length);
+                    for (var i = 0; i < response.response.length; i++) {
+                        last_sms(response.response[i])
+                    }
+                }else{
+                    adapter.log.info(response.response);
+                }
             });
         }
     }
