@@ -5,7 +5,7 @@
 // you have to require the utils module and call adapter function
 var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
 var hilink = require('hilinkhuawei');
-var adapter = utils.adapter('hilink');
+var adapter = utils.Adapter('hilink');
 
 adapter.on('unload', function (callback) {
     try {
