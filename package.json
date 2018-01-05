@@ -25,13 +25,18 @@
     "url": "https://github.com/bondrogeen/iobroker.hilink"
   },
   "dependencies": {
-    "hilinkhuawei":"^2.1.2"
+    "hilinkhuawei": "^2.1.2"
   },
   "devDependencies": {
+    "mocha": "^4.1.0",
+    "chai": "^4.1.2"
   },
   "main": "main.js",
   "bugs": {
     "url": "https://github.com/ioBroker/ioBroker.hilink/issues"
   },
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha --exit"
+  }
 }
