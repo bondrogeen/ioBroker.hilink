@@ -39,6 +39,7 @@
             "vis"
         ],
         "messagebox": true,
+        "materialize": true,
         "authors": [
             {
                 "name": "bondrogeen",
