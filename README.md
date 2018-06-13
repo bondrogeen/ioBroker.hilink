@@ -25,15 +25,15 @@ Compatibility E3372 (МТС 827F/829F, МегаФон M150-2, Билайн E3372
 
 ```javascript
 
-//  connection - 'conect', 
-//  disconnecting - 'desconect' 
+//  connection - 'connect', 
+//  disconnecting - 'disconnect' 
 //  rebooting - 'reboot'
 
 sendTo("hilink.0",'control','reboot',function (response){
     log(JSON.stringify( response, null, 2 ));
 });
 
-sendTo("hilink.0",'control','conect');
+sendTo("hilink.0",'control','connect');
 
 // send messages
 sendTo("hilink.0",'send',{

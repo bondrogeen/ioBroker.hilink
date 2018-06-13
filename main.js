@@ -67,7 +67,7 @@ adapter.on('message', function (obj) {
     if (typeof obj == 'object' && obj.message) {
         if (obj.command == 'control') {
             //adapter.log.info(JSON.stringify(obj.message));
-            if (obj.message == 'conect' || obj.message == 'desconect' || obj.message == 'reboot') {
+            if (obj.message == 'connect' || obj.message == 'disconnect' || obj.message == 'reboot') {
                 //adapter.log.info(JSON.stringify(obj.message));
                 hilink.control(obj.message, function (response) {
                     if (obj.callback)adapter.sendTo(obj.from, obj.command, response, obj.callback);
