@@ -12,7 +12,7 @@
       "email": "bondrogeen@gmail.com"
     }
   ],
-  "homepage": "https://github.com/ioBroker/ioBroker.hilink",
+  "homepage": "https://github.com/bondrogeen/iobroker.hilink",
   "license": "MIT",
   "keywords": [
     "ioBroker",
@@ -33,7 +33,7 @@
   },
   "main": "main.js",
   "bugs": {
-    "url": "https://github.com/ioBroker/ioBroker.hilink/issues"
+    "url": "https://github.com/bondrogeen/iobroker.hilink/issues"
   },
   "readmeFilename": "README.md",
   "scripts": {
