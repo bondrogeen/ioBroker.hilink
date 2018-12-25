@@ -13,7 +13,7 @@ Tested on modems:
 E3372h-153_Update_22.323.01.00.143_M_AT_05.10    
 E3372s Update_22.286.53.01.161_S_ADB_TLN_03
 E3272s 22.491.09.00.00 17.100.08.00.03-Mod1.2   
-
+ 
 Firmware and other information can be found here - http://4pda.ru/forum/index.php?showtopic=582284&   
 
 Compatibility E3372 (МТС 827F/829F, МегаФон M150-2, Билайн E3372/E3370, TELE2 E3372р-153, МТС 824F, Мегафон M100-4, Билайн E3272).     
