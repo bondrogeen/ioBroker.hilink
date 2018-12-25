@@ -161,7 +161,7 @@ function setValue(id, val) {
 }
 
 function setHilink(setid, response) {
- if (typeof (response && response.response) === "object") {
+ if (response && typeof(response.response) === "object") {
   var val;
   for (var key in response.response) {
    val = response.response[key];
