@@ -20,6 +20,7 @@
             "de": "ioBroker Hilink Adapter",
             "ru": "ioBroker Hilink драйвер"
         },
+        "license": "MIT",
         "platform": "Javascript/Node.js",
         "mode": "daemon",
         "icon": "hilink.png",
