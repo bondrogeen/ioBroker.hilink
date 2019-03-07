@@ -25,7 +25,8 @@
     "url": "https://github.com/bondrogeen/iobroker.hilink"
   },
   "dependencies": {
-    "hilinkhuawei": "^2.1.2"
+    "hilinkhuawei": "^2.1.2",
+    "@iobroker/adapter-core": "^1.0.3"
   },
   "devDependencies": {
     "mocha": "^4.1.0",
