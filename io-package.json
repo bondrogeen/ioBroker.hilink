@@ -14,7 +14,7 @@
                 "ru": "Первоначальный адаптер"
             }
         },
-        "title": "Hilink adapter",
+        "title": "Hilink",
         "desc": {
             "en": "ioBroker hilink Adapter",
             "de": "ioBroker Hilink Adapter",
