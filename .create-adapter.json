@@ -1,0 +1,83 @@
+{
+    "expert": "yes",
+    "cli": false,
+    "adapterName": "hilink",
+    "title": "HiLink",
+    "description": "HiLink",
+    "keywords": ["HiLink"],
+    "contributors": "",
+    "features": ["adapter"],
+    "adminFeatures": ["tab"],
+    "type": "infrastructure",
+    "startMode": "daemon",
+    "connectionType": "local",
+    "dataSource": "poll",
+    "connectionIndicator": "yes",
+    "adapterSettings": [
+        {
+            "key": "model",
+            "label": "model",
+            "inputType": "select",
+            "options": [
+                {
+                    "text": "3372s",
+                    "value": "3372s"
+                },
+                {
+                    "text": "3372h",
+                    "value": "3372h"
+                }
+            ],
+            "defaultValue": "3372s"
+        },
+        {
+            "key": "time",
+            "label": "time",
+            "inputType": "number",
+            "defaultValue": "60"
+        },
+        {
+            "key": "ip",
+            "label": "ip",
+            "inputType": "text",
+            "defaultValue": "192.168.8.1"
+        },
+        {
+            "key": "trafficInfo",
+            "label": "trafficInfo",
+            "inputType": "select",
+            "options": [
+                {
+                    "text": "auto",
+                    "value": "auto"
+                },
+                {
+                    "text": "other",
+                    "value": ""
+                }
+            ],
+            "defaultValue": "item1"
+        }
+    ],
+    "language": "JavaScript",
+    "nodeVersion": "14",
+    "adminUi": "json",
+    "tabReact": "yes",
+    "releaseScript": "yes",
+    "indentation": "Space (4)",
+    "quotes": "single",
+    "es6class": "yes",
+    "tools": ["ESLint", "type checking", "Prettier"],
+    "authorName": "bondrogeen",
+    "authorGithub": "bondrogeen",
+    "authorEmail": "bondrogeen@gmail.com",
+    "gitRemoteProtocol": "SSH",
+    "license": "MIT License",
+    "dependabot": "yes",
+    "icon": {
+        "data": "data:image/png;base64,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",
+        "extension": "png"
+    },
+    "target": "github",
+    "creatorVersion": "2.3.0"
+}

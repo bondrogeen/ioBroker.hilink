@@ -1,59 +1,122 @@
 {
     "common": {
         "name": "hilink",
-        "version": "0.2.8",
+        "version": "0.3.0",
         "news": {
-            "0.0.2": {
-                "en": "beta version",
-                "de": "Betaversion",
-                "ru": "Бета версия"
-            },
-            "0.0.1": {
-                "en": "initial adapter",
-                "de": "Initiale Version",
-                "ru": "Первоначальный адаптер"
+            "0.3.0": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
             }
         },
-        "title": "Hilink",
-        "desc": {
-            "en": "ioBroker hilink Adapter",
-            "de": "ioBroker Hilink Adapter",
-            "ru": "ioBroker Hilink драйвер"
+        "title": "HiLink",
+        "titleLang": {
+            "en": "HiLink",
+            "de": "HiLink",
+            "ru": "HiLink",
+            "pt": "HiLink",
+            "nl": "HiLink",
+            "fr": "HiLink",
+            "it": "HiLink",
+            "es": "HiLink",
+            "pl": "HiLink",
+            "zh-cn": "HiLink"
         },
+        "desc": {
+            "en": "HiLink",
+            "de": "HiLink",
+            "ru": "HiLink",
+            "pt": "HiLink",
+            "nl": "HiLink",
+            "fr": "HiLink",
+            "it": "HiLink",
+            "es": "HiLink",
+            "pl": "HiLink",
+            "zh-cn": "HiLink"
+        },
+        "authors": ["bondrogeen <bondrogeen@gmail.com>"],
+        "keywords": ["HiLink"],
         "license": "MIT",
         "platform": "Javascript/Node.js",
-        "mode": "daemon",
+        "main": "main.js",
         "icon": "hilink.png",
-        "enabled": false,
-        "extIcon": "https://raw.githubusercontent.com/bondrogeen/iobroker.hilink/master/admin/hilink.png",
-        "keywords": [
-            "hilink",
-            "vis",
-            "GUI",
-            "graphical",
-            "scada"
-        ],
-        "readme": "https://github.com/bondrogeen/iobroker.hilink/blob/master/README.md",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/bondrogeen/iobroker.hilink/main/admin/hilink.png",
+        "readme": "https://github.com/bondrogeen/iobroker.hilink/blob/main/README.md",
         "loglevel": "info",
-        "type": "hardware",
-        "restartAdapters": [
-            "vis"
-        ],
-        "messagebox": true,
-        "materialize": true,
-        "authors": [
+        "mode": "daemon",
+        "type": "infrastructure",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "adminUI": {
+            "config": "json",
+            "tab": "materialize"
+        },
+        "adminTab": {
+            "singleton": true,
+            "name": {
+                "en": "HiLink",
+                "de": "HiLink",
+                "ru": "HiLink",
+                "pt": "HiLink",
+                "nl": "HiLink",
+                "fr": "HiLink",
+                "it": "HiLink",
+                "es": "HiLink",
+                "pl": "HiLink",
+                "zh-cn": "HiLink"
+            },
+            "link": "",
+            "fa-icon": "info"
+        },
+        "eraseOnUpload": true,
+        "dependencies": [
             {
-                "name": "bondrogeen",
-                "email": "bondrogeen@gmail.com"
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
             }
         ]
     },
     "native": {
-        "setTest": true,
         "model": "3372s",
-        "settime": "60",
-        "getip": "192.168.8.1",
+        "time": 60,
+        "ip": "192.168.8.1",
         "trafficInfo": "auto"
     },
-    "objects": []
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "Device or service connected",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }

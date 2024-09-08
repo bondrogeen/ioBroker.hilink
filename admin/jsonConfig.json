@@ -1,0 +1,46 @@
+{
+    "i18n": true,
+    "type": "panel",
+    "items": {
+        "model": {
+            "type": "select",
+            "label": "model",
+            "options": [
+                {
+                    "label": "3372s",
+                    "value": "3372s"
+                },
+                {
+                    "label": "3372h",
+                    "value": "3372h"
+                }
+            ],
+            "newLine": true
+        },
+        "time": {
+            "type": "number",
+            "label": "time",
+            "newLine": true
+        },
+        "ip": {
+            "type": "text",
+            "label": "ip",
+            "newLine": true
+        },
+        "trafficInfo": {
+            "type": "select",
+            "label": "trafficInfo",
+            "options": [
+                {
+                    "label": "auto",
+                    "value": "auto"
+                },
+                {
+                    "label": "other",
+                    "value": ""
+                }
+            ],
+            "newLine": true
+        }
+    }
+}
