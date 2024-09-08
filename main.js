@@ -39,7 +39,7 @@ class Hilink extends utils.Adapter {
         this.hilink.setModel(this.config.model);
 
         setInterval(this.timeStatus.bind(this), this.config.time * 1000);
-
+        this.timeStatus()
         this.subscribeStates('smscount.LocalUnread');
 
     }
@@ -73,7 +73,6 @@ class Hilink extends utils.Adapter {
     }
 
     timeStatus() {
-        this.log.info('timeStatus');
         this.hilink.smsCount((response) => {
             this.setHilink("smscount", response);
         });
@@ -142,66 +141,66 @@ class Hilink extends utils.Adapter {
 
     onMessage(obj) {
         this.log.info('send obg ' + JSON.stringify(obj));
-        // if (typeof obj == 'object' && obj.message) {
-        //     if (obj.command == 'control') {
-        //         //this.log.info(JSON.stringify(obj.message));
-        //         if (obj.message == 'connect' || obj.message == 'disconnect' || obj.message == 'reboot') {
-        //             //this.log.info(JSON.stringify(obj.message));
-        //             this.hilink.control(obj.message, (response) => {
-        //                 if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //             });
-        //         }
-        //     } else if (obj.command == 'send') {
-        //         if (obj.message.phone && obj.message.message) {
-        //             this.hilink.send(obj.message.phone, obj.message.message, (response) => {
-        //                 if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //             });
-        //         }
-        //     } else if (obj.command == 'read') {
-        //         if (obj.message == 'outbox' || obj.message == 'inbox' || obj.message == 'new') {
-        //             if (obj.message == 'inbox') {
-        //                 this.hilink.listInbox((response) => {
-        //                     if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //                 });
-        //             } else if (obj.message == 'outbox') {
-        //                 this.hilink.listOutbox((response) => {
-        //                     if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //                 });
-        //             } else if (obj.message == 'new') {
-        //                 this.hilink.listNew((response) => {
-        //                     if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //                 });
-        //             }
-        //         }
-        //     } else if (obj.command == 'ussd') {
-        //         if (obj.message) {
-        //             this.hilink.ussd(obj.message, (response) => {
-        //                 if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //             });
-        //         }
-        //     } else if (obj.command == 'delete') {
-        //         if (obj.message) {
-        //             this.hilink.delete(obj.message, (response) => {
-        //                 if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //             });
-        //         }
-        //     } else if (obj.command == 'clear') {
-        //         if (obj.message == 'inbox' || obj.message == 'outbox') {
-        //             if (obj.message == 'inbox') this.hilink.clearInbox();
-        //             if (obj.message == 'outbox') this.hilink.clearOutbox();
-        //         }
-        //     } else if (obj.command == 'setRead') {
-        //         if (obj.message == 'all') {
-        //             this.hilink.readAll((response) => {
-        //                 if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //             });
-        //         } else {
-        //             this.hilink.setRead(obj.message, (response) => {
-        //                 if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
-        //             });
-        //         }
-        //     }
-        // }
+        if (typeof obj == 'object' && obj.message) {
+            if (obj.command == 'control') {
+                //this.log.info(JSON.stringify(obj.message));
+                if (obj.message == 'connect' || obj.message == 'disconnect' || obj.message == 'reboot') {
+                    //this.log.info(JSON.stringify(obj.message));
+                    this.hilink.control(obj.message, (response) => {
+                        if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                }
+            } else if (obj.command == 'send') {
+                if (obj.message.phone && obj.message.message) {
+                    this.hilink.send(obj.message.phone, obj.message.message, (response) => {
+                        if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                }
+            } else if (obj.command == 'read') {
+                if (obj.message == 'outbox' || obj.message == 'inbox' || obj.message == 'new') {
+                    if (obj.message == 'inbox') {
+                        this.hilink.listInbox((response) => {
+                            if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                        });
+                    } else if (obj.message == 'outbox') {
+                        this.hilink.listOutbox((response) => {
+                            if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                        });
+                    } else if (obj.message == 'new') {
+                        this.hilink.listNew((response) => {
+                            if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                        });
+                    }
+                }
+            } else if (obj.command == 'ussd') {
+                if (obj.message) {
+                    this.hilink.ussd(obj.message, (response) => {
+                        if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                }
+            } else if (obj.command == 'delete') {
+                if (obj.message) {
+                    this.hilink.delete(obj.message, (response) => {
+                        if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                }
+            } else if (obj.command == 'clear') {
+                if (obj.message == 'inbox' || obj.message == 'outbox') {
+                    if (obj.message == 'inbox') this.hilink.clearInbox();
+                    if (obj.message == 'outbox') this.hilink.clearOutbox();
+                }
+            } else if (obj.command == 'setRead') {
+                if (obj.message == 'all') {
+                    this.hilink.readAll((response) => {
+                        if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                } else {
+                    this.hilink.setRead(obj.message, (response) => {
+                        if (obj.callback) this.sendTo(obj.from, obj.command, response, obj.callback);
+                    });
+                }
+            }
+        }
     }
 }
 
